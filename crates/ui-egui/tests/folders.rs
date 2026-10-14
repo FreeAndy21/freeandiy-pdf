@@ -200,8 +200,9 @@ fn show_more_reveals_the_older_pdfs() {
 #[test]
 fn a_long_pdf_name_is_cut_before_its_date_and_size() {
     let dir = TempFolder::new("long");
-    // Short enough for Windows' 260-character paths under the temp folder.
-    let name = format!("{}.pdf", "Signed contract with a long name ".repeat(4));
+    // Short enough for Windows' 260-character paths under the temp folder. FreeANDIY: long enough
+    // to be cut in IBM Plex Sans, which is narrower than upstream's Inter.
+    let name = format!("{}.pdf", "Signed contract with a much longer name ".repeat(4));
     dir.file(&name, FIXTURE, Duration::from_secs(10));
     let folder = dir.path();
     let mut h = harness(move |app| {
