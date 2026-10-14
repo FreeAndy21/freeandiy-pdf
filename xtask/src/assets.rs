@@ -224,6 +224,14 @@ fn mentions_adobe(s: &str) -> bool {
 }
 
 /// All policy checks that don't depend on the filesystem layout beyond `root` (unit-testable).
+/// FreeANDIY: paths the fork owns (its sources, the app icon and DMG art copied from them) or
+/// removed (upstream's ArtCraft marks). They are attributed in NOTICE's FreeANDIY section and
+/// `freeandiy/assets/brand/LICENSE-brand.txt`, not in ATTRIBUTION.toml (whose upstream rows stay
+/// untouched so upstream updates merge).
+fn freeandiy_owned(path: &str) -> bool {
+    ["freeandiy/", "assets/app-icon/", "packaging/macos/dmg/", "docs/brand/"].iter().any(|p| path.starts_with(p))
+}
+
 pub fn check(root: &Path, m: &Manifest, repo_files: &[String], lock: &BTreeSet<(String, String)>) -> Vec<String> {
     let mut problems = Vec::new();
     let mut seen = BTreeSet::new();
@@ -237,7 +245,7 @@ pub fn check(root: &Path, m: &Manifest, repo_files: &[String], lock: &BTreeSet<(
             }
         }
     };
-    for a in &m.asset {
+    for a in m.asset.iter().filter(|a| !freeandiy_owned(&a.path)) {
         if !seen.insert(a.path.clone()) {
             problems.push(format!("{}: listed twice", a.path));
         }
@@ -261,7 +269,7 @@ pub fn check(root: &Path, m: &Manifest, repo_files: &[String], lock: &BTreeSet<(
         }
     }
     for f in repo_files {
-        if is_asset_path(f) && !seen.contains(f) && root.join(f).is_file() {
+        if is_asset_path(f) && !seen.contains(f) && !freeandiy_owned(f) && root.join(f).is_file() {
             problems.push(format!("{f}: asset has no ATTRIBUTION.toml entry"));
         }
     }

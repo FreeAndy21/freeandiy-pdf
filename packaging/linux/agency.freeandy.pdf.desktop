@@ -1,14 +1,14 @@
 [Desktop Entry]
 Type=Application
-Name=PdfCraft
+Name=FreeANDIY PDF
 GenericName=PDF Editor
 Comment=Read, organize, combine, split and secure PDFs
-Exec=pdfcraft %U
-TryExec=pdfcraft
-Icon=ai.storyteller.pdfcraft
+Exec=freeandiy-pdf %U
+TryExec=freeandiy-pdf
+Icon=agency.freeandy.pdf
 Terminal=false
 StartupNotify=true
-StartupWMClass=ai.storyteller.pdfcraft
+StartupWMClass=agency.freeandy.pdf
 Categories=Office;Viewer;
 Keywords=pdf;viewer;editor;annotate;sign;forms;merge;split;
 MimeType=application/pdf;

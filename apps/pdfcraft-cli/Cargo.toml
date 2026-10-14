@@ -5,8 +5,9 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 
+# FreeANDIY: the executable carries the product name; the package keeps upstream's.
 [[bin]]
-name = "pdfcraft-cli"
+name = "freeandiy-pdf-cli"
 path = "src/main.rs"
 
 [lints]

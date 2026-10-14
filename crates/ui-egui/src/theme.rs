@@ -69,6 +69,11 @@ pub struct Tokens {
 
 impl Tokens {
     pub fn for_kind(kind: ThemeKind) -> Self {
+        crate::freeandiy::tokens(Self::upstream(kind))
+    }
+
+    /// Upstream's tokens (FreeANDIY restyles them in `crate::freeandiy::tokens`).
+    fn upstream(kind: ThemeKind) -> Self {
         match kind {
             ThemeKind::Light => Self {
                 kind,
@@ -319,11 +324,12 @@ fn font_definitions_for_platform(prefer_hans: bool, platform: FontPolicyPlatform
         };
         fonts.font_data.insert(name.to_owned(), Arc::new(data));
     };
-    // Shared with typed signatures' fallback glyphs, so the font is embedded once.
-    add(&mut fonts, "Inter", pdfcraft_fonts::INTER_REGULAR);
-    add(&mut fonts, "Inter-Medium", include_bytes!("../../../assets/fonts/Inter-Medium.ttf"));
-    add(&mut fonts, "Inter-SemiBold", include_bytes!("../../../assets/fonts/Inter-SemiBold.ttf"));
-    add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
+    // FreeANDIY: the UI faces are IBM Plex Sans and Mono (`crate::freeandiy::fonts`), under
+    // upstream's font keys so the font policy and its tests stay unchanged.
+    add(&mut fonts, "Inter", crate::freeandiy::fonts::sans_regular());
+    add(&mut fonts, "Inter-Medium", crate::freeandiy::fonts::sans_medium());
+    add(&mut fonts, "Inter-SemiBold", crate::freeandiy::fonts::sans_semibold());
+    add(&mut fonts, "JetBrainsMono", crate::freeandiy::fonts::mono_regular());
     fonts.families.entry(FontFamily::Proportional).or_default().insert(0, "Inter".to_owned());
     fonts.families.entry(FontFamily::Monospace).or_default().insert(0, "JetBrainsMono".to_owned());
     // The same static bytes pdfcraft-fonts uses for Japanese/Chinese text in PDFs: one copy, not two.
@@ -422,6 +428,7 @@ pub fn apply(ctx: &egui::Context, kind: ThemeKind) {
     if !t.dark() {
         v.text_options.color_transfer_function = egui::epaint::FontColorTransferFunction::Gamma(0.75);
     }
+    crate::freeandiy::visuals(&mut v);
     ctx.set_visuals(v);
     ctx.global_style_mut(|s| {
         s.spacing.item_spacing = egui::vec2(8.0, 6.0);

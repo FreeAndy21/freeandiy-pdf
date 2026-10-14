@@ -30,7 +30,7 @@ pub const LANGUAGES: &[(&str, &str)] = &[("en", "English")];
 pub enum OcrError {
     /// Shown to end users (release packages ship the models; a source build fetches them with
     /// `cargo xtask models`). The UI catalogs key this exact text.
-    #[error("the text recognition models are not installed (reinstall PdfCraft, or set PDFCRAFT_MODELS to the folder that holds them)")]
+    #[error("the text recognition models are not installed (reinstall FreeANDIY PDF, or set PDFCRAFT_MODELS to the folder that holds them)")]
     NoModels,
     #[error("loading {0}: {1}")]
     Load(String, String),
@@ -77,10 +77,10 @@ impl Models {
     /// executable (packaging/*):
     /// - `models/` beside it: the Windows MSI and portable zip;
     /// - `../Resources/models`: the macOS app bundle (`Contents/MacOS` → `Contents/Resources`);
-    /// - `../share/pdfcraft/models`: the FHS-style trees (`bin/` → `share/`) of the Linux
+    /// - `../share/freeandiy-pdf/models`: the FHS-style trees (`bin/` → `share/`) of the Linux
     ///   deb/rpm/tar.gz/AppImage/Flatpak and the FreeBSD tarball, wherever they are installed.
     pub fn dirs_beside_exe(exe_dir: &Path) -> Vec<PathBuf> {
-        vec![exe_dir.join("models"), exe_dir.join("../Resources/models"), exe_dir.join("../share/pdfcraft/models")]
+        vec![exe_dir.join("models"), exe_dir.join("../Resources/models"), exe_dir.join("../share/freeandiy-pdf/models")]
     }
 }
 
@@ -304,13 +304,13 @@ mod tests {
     fn finds_the_models_in_every_release_package_layout() {
         let base = std::env::temp_dir().join(format!("pdfcraft-ocr-layouts-{}", std::process::id()));
         let layouts = [
-            ("windows", "PdfCraft", "PdfCraft/models"),
-            ("macos", "PdfCraft.app/Contents/MacOS", "PdfCraft.app/Contents/Resources/models"),
-            ("linux-deb-rpm", "usr/bin", "usr/share/pdfcraft/models"),
-            ("linux-tar", "pdfcraft-1.0.0-linux-x86_64/bin", "pdfcraft-1.0.0-linux-x86_64/share/pdfcraft/models"),
-            ("appimage", "PdfCraft.AppDir/usr/bin", "PdfCraft.AppDir/usr/share/pdfcraft/models"),
-            ("flatpak", "app/bin", "app/share/pdfcraft/models"),
-            ("freebsd", "usr/local/bin", "usr/local/share/pdfcraft/models"),
+            ("windows", "FreeANDIY PDF", "FreeANDIY PDF/models"),
+            ("macos", "FreeANDIY PDF.app/Contents/MacOS", "FreeANDIY PDF.app/Contents/Resources/models"),
+            ("linux-deb-rpm", "usr/bin", "usr/share/freeandiy-pdf/models"),
+            ("linux-tar", "pdfcraft-1.0.0-linux-x86_64/bin", "pdfcraft-1.0.0-linux-x86_64/share/freeandiy-pdf/models"),
+            ("appimage", "FreeANDIY PDF.AppDir/usr/bin", "FreeANDIY PDF.AppDir/usr/share/freeandiy-pdf/models"),
+            ("flatpak", "app/bin", "app/share/freeandiy-pdf/models"),
+            ("freebsd", "usr/local/bin", "usr/local/share/freeandiy-pdf/models"),
         ];
         for (name, exe_dir, models_dir) in layouts {
             let root = base.join(name);

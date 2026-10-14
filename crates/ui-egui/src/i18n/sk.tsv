@@ -1,0 +1,275 @@
+# Slovak (sk) catalog. Added by FreeANDIY (Free Andy Agency), 2026; MIT OR Apache-2.0 like the
+# other catalogs. Columns, separated by a TAB:  context <TAB> source <TAB> translation
+#
+#   context  empty                a plain UI string; `source` is the English text in the code
+#            @id                  a command id (e.g. file.saveAs): wins over the English text
+#            @plural              `source` is "one|other"; the translation lists the Slovak forms
+#                                 "one|few|other" (1 | 2–4 | 0, 5+), see `plural_cs` in i18n/mod.rs
+#            anything else        a disambiguating context passed to `tr_ctx`
+#   escapes  \n  \t  \\  inside a column. `{name}` placeholders must appear in both columns.
+#   lines starting with # and blank lines are ignored.
+#
+# Clean-room: every entry was written from the plain meaning of the English label using ordinary
+# Slovak computing vocabulary (stránka, komentár, záložka, pole formulára, podpis, začiernenie ...). No
+# proprietary localisation resource, string table or product UI was consulted or copied; in
+# particular not the Slovak localisation of any commercial PDF application. Add entries the same way.
+# Conventions: menus are nouns (Súbor, Úpravy, Stránky ...), commands are infinitives or nouns
+# (Otvoriť…, Uložiť ako…), sentence case as in the English source. Product and technology names
+# (FreeANDIY PDF, OpenType, CMYK, Lab ...) stay in Latin letters; the trailing "…" of dialog
+# commands is kept.
+#
+# Coverage: the menus and every registered command, and the common strings shared with the
+# other FreeANDIY apps. Everything else falls back to English until translated.
+
+# Menus, commands and common dialogs
+	File	Súbor
+	Export	Exportovať
+	Scripts	Skripty
+	Edit	Úpravy
+	Preferences	Nastavenia
+	Delete	Odstrániť
+	Panels	Panely
+	View	Zobraziť
+	Help	Pomocník
+	Open…	Otvoriť…
+	Close	Zavrieť
+	Save	Uložiť
+	Revert	Vrátiť na uložené
+	Print…	Tlačiť…
+	Undo	Späť
+	Redo	Znova
+	Cut	Vystrihnúť
+	Copy	Kopírovať
+	Clear	Vymazať
+	Duplicate…	Duplikovať…
+	All	Všetko
+	Actions	Akcie
+	Layers	Vrstvy
+	Options	Možnosti
+	Tools	Nástroje
+	Rotate	Otočiť
+	FreeANDIY PDF on GitHub	FreeANDIY PDF na GitHube
+	About FreeANDIY PDF	O aplikácii FreeANDIY PDF
+	OK	OK
+	Cancel	Zrušiť
+	Apply	Použiť
+	Create	Vytvoriť
+	Preview	Náhľad
+	Yes	Áno
+	No	Nie
+	Width	Šírka
+	Height	Výška
+	Resolution	Rozlíšenie
+	Recent	Nedávne
+	Remove from Recent	Odstrániť z nedávnych
+	Remove {name} from Recent	Odstrániť {name} z nedávnych
+	Clear Recent Files	Vymazať nedávne súbory
+	About	O aplikácii
+	Contributors	Prispievatelia
+	Models	Modely
+	Selection	Výber
+	Open	Otvoriť
+	Preferences…	Nastavenia…
+	Options…	Možnosti…
+	Bold	Tučné
+	Italic	Kurzíva
+	Horizontal	Vodorovne
+	Vertical	Zvisle
+	Appearance	Vzhľad
+	Opacity	Krytie
+	Actual Size	Skutočná veľkosť
+	Advanced	Rozšírené
+	Pages	Stránky
+	Open Recent	Otvoriť nedávne
+	Pin folder to Home…	Pripnúť priečinok na Domov…
+	New blank PDF	Nový prázdny PDF
+	Measure distance	Merať vzdialenosť
+	Measure perimeter	Merať obvod
+	Measure area	Merať plochu
+	Set measurement scale	Nastaviť mierku merania
+	Measurement information	Informácie o meraní
+	Measurement snapping	Prichytávanie pri meraní
+	Export measurements as CSV	Exportovať merania ako CSV
+	Copy pages	Kopírovať stránky
+	Cut pages	Vystrihnúť stránky
+	Paste pages	Prilepiť stránky
+	Create PDF from file…	Vytvoriť PDF zo súboru…
+	Create PDF from multiple files…	Vytvoriť PDF z viacerých súborov…
+	Create separate PDFs…	Vytvoriť samostatné PDF…
+	Create PDF from images…	Vytvoriť PDF z obrázkov…
+	Create PDF from clipboard	Vytvoriť PDF zo schránky
+	Combine files…	Spojiť súbory…
+	Save as…	Uložiť ako…
+	Close file	Zavrieť súbor
+	Close all	Zavrieť všetko
+	Document properties…	Vlastnosti dokumentu…
+	Find…	Nájsť…
+	Advanced search…	Rozšírené hľadanie…
+	Find tools and commands…	Nájsť nástroje a príkazy…
+	Single page	Jedna stránka
+	Two-page view	Dvojstránkové zobrazenie
+	Continuous scrolling	Plynulé posúvanie
+	Show cover page in two-page view	Zobraziť titulnú stranu v dvojstránkovom zobrazení
+	Fit to width scrolling	Posúvanie s prispôsobením šírke
+	Fit one full page	Prispôsobiť celú stránku
+	Fit visible	Prispôsobiť viditeľné
+	Marquee zoom	Zväčšenie výberom
+	Column select	Výber stĺpca
+	Take a snapshot	Urobiť snímku
+	Full screen mode	Režim celej obrazovky
+	Read mode	Režim čítania
+	Next tab	Ďalšia karta
+	Previous tab	Predchádzajúca karta
+	Go to page…	Prejsť na stránku…
+	Reset panel layout	Obnoviť rozloženie panelov
+	Switch light / dark theme	Prepnúť svetlú / tmavú tému
+	Use system setting	Podľa systému
+	Light gray	Svetlosivá
+	Dark gray	Tmavosivá
+	Comments panel	Panel komentárov
+	Add a sticky note	Pridať poznámku
+	Add a text box	Pridať textové pole
+	Highlight text	Zvýrazniť text
+	Underline text	Podčiarknuť text
+	Strikethrough text	Prečiarknuť text
+	Squiggly underline text	Podčiarknuť text vlnovkou
+	Draw freehand	Kresliť voľnou rukou
+	Draw a line	Nakresliť čiaru
+	Draw an arrow	Nakresliť šípku
+	Draw a rectangle	Nakresliť obdĺžnik
+	Draw an oval	Nakresliť ovál
+	Draw a polygon	Nakresliť mnohouholník
+	Draw connected lines	Nakresliť spojené čiary
+	Draw a cloud	Nakresliť obláčik
+	Add a callout	Pridať popisku
+	Insert text	Vložiť text
+	Replace text	Nahradiť text
+	Attach a file	Priložiť súbor
+	Erase drawings	Vymazať kresby
+	Form fields panel	Panel polí formulára
+	Clear form	Vymazať formulár
+	Flatten comments	Zlúčiť komentáre
+	Import comments…	Importovať komentáre…
+	Add a stamp	Pridať pečiatku
+	Export all comments to data file…	Exportovať všetky komentáre do dátového súboru…
+	Hide all comments	Skryť všetky komentáre
+	Summarize comments	Zhrnúť komentáre
+	Import form data…	Importovať údaje formulára…
+	Export form data…	Exportovať údaje formulára…
+	PDF/A…	PDF/A…
+	Action Wizard…	Sprievodca akciami…
+	Prepare for distribution…	Pripraviť na distribúciu…
+	Optimize scanned documents…	Optimalizovať naskenované dokumenty…
+	Compare files…	Porovnať súbory…
+	Detect form fields	Rozpoznať polia formulára
+	Merge data files into spreadsheet…	Zlúčiť dátové súbory do tabuľky…
+	Flatten form fields	Zlúčiť polia formulára
+	Prepare a form	Pripraviť formulár
+	Tab order: by rows	Poradie tabulátora: po riadkoch
+	Tab order: by columns	Poradie tabulátora: po stĺpcoch
+	Tab order: by document structure	Poradie tabulátora: podľa štruktúry dokumentu
+	Add text	Pridať text
+	Edit text & images	Upraviť text a obrázky
+	Add or edit links	Pridať alebo upraviť odkazy
+	Create links from URLs	Vytvoriť odkazy z adries URL
+	Remove all links	Odstrániť všetky odkazy
+	Add Bates numbering…	Pridať Batesovo číslovanie…
+	Add image…	Pridať obrázok…
+	Redact text and images	Začierniť text a obrázky
+	Redact pages…	Začierniť stránky…
+	Find text and redact…	Nájsť text a začierniť…
+	Redaction properties…	Vlastnosti začiernenia…
+	Apply redactions…	Použiť začiernenia…
+	Clear redaction marks	Vymazať značky začiernenia
+	Remove hidden information…	Odstrániť skryté informácie…
+	Sanitize document…	Vyčistiť dokument…
+	Field properties…	Vlastnosti poľa…
+	Add a text field	Pridať textové pole
+	Add a checkbox	Pridať začiarkavacie políčko
+	Add a radio button	Pridať prepínač
+	Add a drop-down list	Pridať rozbaľovací zoznam
+	Add a list box	Pridať zoznam
+	Add a button	Pridať tlačidlo
+	Add an image field	Pridať pole obrázka
+	Add a date field	Pridať pole dátumu
+	Add a digital signature field	Pridať pole digitálneho podpisu
+	Digitally sign	Digitálne podpísať
+	Certify (visible signature)	Certifikovať (viditeľný podpis)
+	Certify (invisible signature)	Certifikovať (neviditeľný podpis)
+	Validate all signatures	Overiť všetky podpisy
+	Signatures panel	Panel podpisov
+	Fill & Sign: add text	Vyplniť a podpísať: pridať text
+	Fill & Sign: checkmark	Vyplniť a podpísať: fajka
+	Fill & Sign: cross	Vyplniť a podpísať: krížik
+	Fill & Sign: dot	Vyplniť a podpísať: bodka
+	Fill & Sign: line	Vyplniť a podpísať: čiara
+	Fill & Sign: date	Vyplniť a podpísať: dátum
+	Fill & Sign: sign	Vyplniť a podpísať: podpis
+	Fill & Sign: initials	Vyplniť a podpísať: iniciály
+	Fill & Sign: change signature	Vyplniť a podpísať: zmeniť podpis
+	Fill & Sign: remove saved signature	Vyplniť a podpísať: odstrániť uložený podpis
+	Fill & Sign: remove saved initials	Vyplniť a podpísať: odstrániť uložené iniciály
+	Fill & Sign: change initials	Vyplniť a podpísať: zmeniť iniciály
+	Export to image…	Exportovať do obrázka…
+	Reduce file size…	Zmenšiť veľkosť súboru…
+	Optimize PDF…	Optimalizovať PDF…
+	Export to text…	Exportovať do textu…
+	Export to Word…	Exportovať do Wordu…
+	Export to PowerPoint…	Exportovať do PowerPointu…
+	Export to HTML…	Exportovať do HTML…
+	Export to RTF…	Exportovať do RTF…
+	JavaScript console…	Konzola JavaScriptu…
+	Document JavaScripts…	JavaScripty dokumentu…
+	Recognize text…	Rozpoznať text…
+	Enhance camera image	Vylepšiť snímku z fotoaparátu
+	Recognize text in multiple files…	Rozpoznať text vo viacerých súboroch…
+	Check for accessibility…	Skontrolovať prístupnosť…
+	Automatically tag PDF	Automaticky označiť PDF
+	Open accessibility report	Otvoriť správu o prístupnosti
+	Change reading options…	Zmeniť možnosti čítania…
+	Add alternate text…	Pridať alternatívny text…
+	Tags panel	Panel značiek
+	Export all images…	Exportovať všetky obrázky…
+	Add header & footer…	Pridať hlavičku a pätu…
+	Update header & footer…	Aktualizovať hlavičku a pätu…
+	Remove header & footer	Odstrániť hlavičku a pätu
+	Add watermark…	Pridať vodoznak…
+	Update watermark…	Aktualizovať vodoznak…
+	Remove watermark	Odstrániť vodoznak
+	Add background…	Pridať pozadie…
+	Update background…	Aktualizovať pozadie…
+	Remove background	Odstrániť pozadie
+	Protect using password…	Chrániť heslom…
+	Remove security	Odstrániť zabezpečenie
+	Enter permissions password…	Zadať heslo oprávnení…
+	Security properties…	Vlastnosti zabezpečenia…
+	Organize pages	Usporiadať stránky
+	New bookmark	Nová záložka
+	New bookmarks from structure	Nové záložky zo štruktúry
+	Rotate pages clockwise	Otočiť stránky v smere hodinových ručičiek
+	Rotate pages counterclockwise	Otočiť stránky proti smeru hodinových ručičiek
+	Delete pages	Odstrániť stránky
+	Insert blank page	Vložiť prázdnu stránku
+	Rotate pages…	Otočiť stránky…
+	Duplicate pages	Duplikovať stránky
+	Crop pages	Orezať stránky
+	Set page boxes…	Nastaviť rámčeky stránky…
+	Insert pages from file…	Vložiť stránky zo súboru…
+	Replace pages…	Nahradiť stránky…
+	Extract pages…	Extrahovať stránky…
+	Split document…	Rozdeliť dokument…
+	Number pages…	Očíslovať stránky…
+	Keyboard shortcuts	Klávesové skratky
+	FreeANDIY PDF web page	Webová stránka FreeANDIY PDF
+	FreeANDIY website	Web FreeANDIY
+	Check for updates…	Skontrolovať aktualizácie…
+	Open this local PDF?	Otvoriť tento lokálny PDF?
+	This document is trying to open a local file:	Tento dokument sa pokúša otvoriť lokálny súbor:
+	Only allow this if you trust the source document.	Povoľte to, len ak zdrojovému dokumentu dôverujete.
+	Allow	Povoliť
+	Part of	Súčasť
+
+# FreeANDIY's own strings (About, Home), under the "freeandiy" context
+freeandiy	{app} is based on the open-source project {upstream} (© ArtCraft Team and contributors, MIT/Apache-2.0). FreeANDIY is not affiliated with the ArtCraft team.	{app} je založený na open-source projekte {upstream} (© ArtCraft Team a prispievatelia, MIT/Apache-2.0). FreeANDIY nie je spojený s tímom ArtCraft.
+freeandiy	FreeANDIY: free creative and office apps	FreeANDIY: bezplatné kreatívne a kancelárske aplikácie
+freeandiy	FreeANDIY PDF is part of FreeANDIY by Free Andy Agency. Report problems on GitHub.	FreeANDIY PDF je súčasťou FreeANDIY od Free Andy Agency. Problémy hláste na GitHube.

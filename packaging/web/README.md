@@ -1,7 +1,7 @@
 # Hosting PdfCraft for the web
 
-`pdfcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
-static site in `pdfcraft-web-<version>/`:
+`freeandiy-pdf-<version>-web-wasm32.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+static site in `freeandiy-pdf-<version>-web-wasm32/`:
 
 | File | What it is |
 |---|---|
@@ -16,7 +16,7 @@ There is no server-side code. Upload the folder's contents anywhere that serves 
 
 All URLs in `index.html` are relative (`public_url = "./"` in `apps/pdfcraft-web/Trunk.toml`),
 so the site works at a domain root (`https://example.com/`), under a prefix
-(`https://example.com/tools/pdfcraft/`) and from a CDN bucket. The asset names carry a content
+(`https://example.com/tools/freeandiy-pdf/`) and from a CDN bucket. The asset names carry a content
 hash, so they can be cached forever. Only `index.html` needs revalidation.
 
 Add `?file=<URL-encoded document URL>` to open a PDF on startup. The document must be served
@@ -44,7 +44,7 @@ workspace and Save target stay selected. Click the downloaded file's tab to swit
 nginx example:
 
 ```nginx
-location /pdfcraft/ {
+location /freeandiy-pdf/ {
     types { application/wasm wasm; text/javascript js; text/html html; }
     gzip on;
     gzip_types application/wasm text/javascript text/html;
@@ -59,7 +59,7 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
 
 ```html
 <iframe
-  src="https://example.com/pdfcraft/"
+  src="https://example.com/freeandiy-pdf/"
   title="PdfCraft PDF workbench"
   style="width: 100%; height: 720px; border: 0;"
   allow="fullscreen; clipboard-read; clipboard-write"
@@ -89,6 +89,6 @@ PdfCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls
 | `?webgl` | Force the WebGL2 backend (useful when a WebGPU driver misbehaves) |
 | `?cpu` | Force the CPU canvas path (slowest, most compatible) |
 
-For example: `<iframe src="https://example.com/pdfcraft/?webgl" ...>`.
+For example: `<iframe src="https://example.com/freeandiy-pdf/?webgl" ...>`.
 
 A browser with neither WebGPU nor WebGL2 gets a message in place of the app.

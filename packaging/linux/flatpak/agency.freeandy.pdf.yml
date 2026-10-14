@@ -1,22 +1,22 @@
-# Flatpak manifest for PdfCraft, ready for a Flathub submission.
+# Flatpak manifest for FreeANDIY PDF, ready for a Flathub submission.
 #
 # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
 #
 #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
 #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.pdfcraft.yml
-#   flatpak run ai.storyteller.pdfcraft
+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/agency.freeandy.pdf.yml
+#   flatpak run agency.freeandy.pdf
 #
 # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-# The single-file .flatpak attached to each release comes from ai.storyteller.pdfcraft.bundle.yml,
+# The single-file .flatpak attached to each release comes from agency.freeandy.pdf.bundle.yml,
 # which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
-id: ai.storyteller.pdfcraft
+id: agency.freeandy.pdf
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-command: pdfcraft
+command: freeandiy-pdf
 finish-args:
   # Display: Wayland first; X11 only when no Wayland compositor is running.
   - --socket=wayland
@@ -39,23 +39,23 @@ finish-args:
 build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
 modules:
-  - name: pdfcraft
+  - name: freeandiy-pdf
     buildsystem: simple
     build-options:
       env:
-        CARGO_HOME: /run/build/pdfcraft/cargo
+        CARGO_HOME: /run/build/freeandiy-pdf/cargo
         CARGO_NET_OFFLINE: 'true'
     build-commands:
       - cargo --offline build --release --locked -p pdfcraft
-      - install -Dm755 target/release/pdfcraft /app/bin/pdfcraft
-      - install -Dm644 packaging/linux/ai.storyteller.pdfcraft.desktop /app/share/applications/ai.storyteller.pdfcraft.desktop
-      - install -Dm644 packaging/linux/ai.storyteller.pdfcraft.mime.xml /app/share/mime/packages/ai.storyteller.pdfcraft.xml
+      - install -Dm755 target/release/freeandiy-pdf /app/bin/freeandiy-pdf
+      - install -Dm644 packaging/linux/agency.freeandy.pdf.desktop /app/share/applications/agency.freeandy.pdf.desktop
+      - install -Dm644 packaging/linux/agency.freeandy.pdf.mime.xml /app/share/mime/packages/agency.freeandy.pdf.xml
       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
       - >-
         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
         install -d /app/share/metainfo;
         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
-        packaging/linux/ai.storyteller.pdfcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.pdfcraft.metainfo.xml
+        packaging/linux/agency.freeandy.pdf.metainfo.xml.in > /app/share/metainfo/agency.freeandy.pdf.metainfo.xml
     sources:
       - type: dir
         path: ../../..
