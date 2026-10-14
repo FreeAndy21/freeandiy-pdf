@@ -18,7 +18,7 @@ ci_tests = "false"
 [check]
 # check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
 # in string literals (git pathspecs, space-separated).
-allow = ""
+allow = "PdfCraftFuzz|PdfCraftTest|No_Such_Queue_PdfCraft"
 rs_exclude = ":!xtask/**"
 
 [msi]

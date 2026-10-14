@@ -254,12 +254,19 @@ skip_comments = ["//"]
 min = 110
 
 [[replace]]
-name = "product name PdfCraft"
-include = ["**/*.tsv", "packaging/**", "apps/pdfcraft-web/index.html", ".github/**", "Dockerfile"]
-exclude = ["crates/ui-egui/src/i18n/LICENSE-translations.txt", "**/*.md"]
-regex = '\bPdfCraft\b'
+name = "product name PdfCraft (catalogs: any script may follow it, e.g. Telugu suffixes)"
+include = ["**/*.tsv"]
+find = "PdfCraft"
 replace = "{{this.name}}"
 min = 300
+
+[[replace]]
+name = "product name PdfCraft (packaging, web page, CI)"
+include = ["packaging/**", "apps/pdfcraft-web/index.html", ".github/**", "Dockerfile"]
+exclude = ["**/*.md"]
+regex = '\bPdfCraft\b'
+replace = "{{this.name}}"
+min = 30
 
 # ---------------------------------------------------------------------------------------------
 # Executables, packaging file names.
