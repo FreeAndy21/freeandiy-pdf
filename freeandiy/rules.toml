@@ -251,7 +251,7 @@ exclude = ["xtask/**", "vendor/**"]
 regex = '\bPdfCraft\b'
 replace = "{{this.name}}"
 skip_comments = ["//"]
-min = 150
+min = 110
 
 [[replace]]
 name = "product name PdfCraft"
