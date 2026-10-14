@@ -166,7 +166,7 @@ index f800ad6a..4025f8f8 100644
  mod icon_data;
  pub mod icons;
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
-index 9f2bb900..d2d0f9e1 100644
+index 9f2bb900..6a4f9b88 100644
 --- a/crates/ui-egui/src/theme.rs
 +++ b/crates/ui-egui/src/theme.rs
 @@ -69,6 +69,11 @@ pub struct Tokens {
@@ -181,7 +181,7 @@ index 9f2bb900..d2d0f9e1 100644
          match kind {
              ThemeKind::Light => Self {
                  kind,
-@@ -319,11 +324,12 @@ fn font_definitions_for_platform(prefer_hans: bool, platform: FontPolicyPlatform
+@@ -319,13 +324,20 @@ fn font_definitions_for_platform(prefer_hans: bool, platform: FontPolicyPlatform
          };
          fonts.font_data.insert(name.to_owned(), Arc::new(data));
      };
@@ -198,8 +198,16 @@ index 9f2bb900..d2d0f9e1 100644
 +    add(&mut fonts, "JetBrainsMono", crate::freeandiy::fonts::mono_regular());
      fonts.families.entry(FontFamily::Proportional).or_default().insert(0, "Inter".to_owned());
      fonts.families.entry(FontFamily::Monospace).or_default().insert(0, "JetBrainsMono".to_owned());
++    // FreeANDIY: upstream's faces stay right behind Plex for the glyphs Plex lacks (Plex Mono has
++    // no Greek, for example).
++    add(&mut fonts, "Inter-Upstream", pdfcraft_fonts::INTER_REGULAR);
++    add(&mut fonts, "JetBrainsMono-Upstream", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
++    fonts.families.entry(FontFamily::Proportional).or_default().insert(1, "Inter-Upstream".to_owned());
++    fonts.families.entry(FontFamily::Monospace).or_default().insert(1, "JetBrainsMono-Upstream".to_owned());
      // The same static bytes pdfcraft-fonts uses for Japanese/Chinese text in PDFs: one copy, not two.
-@@ -422,6 +428,7 @@ pub fn apply(ctx: &egui::Context, kind: ThemeKind) {
+     for face in pdfcraft_fonts::ui_cjk_fonts(prefer_hans) {
+         let name = face.name();
+@@ -422,6 +434,7 @@ pub fn apply(ctx: &egui::Context, kind: ThemeKind) {
      if !t.dark() {
          v.text_options.color_transfer_function = egui::epaint::FontColorTransferFunction::Gamma(0.75);
      }
@@ -255,6 +263,23 @@ index 4f5aaa79..46693704 100644
              if resp.on_hover_text(l.url).clicked() {
                  clicked = Some(l.command);
              }
+diff --git a/crates/ui-egui/tests/fonts.rs b/crates/ui-egui/tests/fonts.rs
+index 63a31d4c..8fb5c288 100644
+--- a/crates/ui-egui/tests/fonts.rs
++++ b/crates/ui-egui/tests/fonts.rs
+@@ -298,7 +298,11 @@ fn primary_ui_fonts_cover_latin_and_cyrillic_catalogs() {
+             let data = &defs.font_data[name];
+             let font = skrifa::FontRef::from_index(&data.font, data.index).unwrap();
+             let charmap = font.charmap();
+-            let mut missing: Vec<char> = text.chars().filter(|c| charmap.map(*c).is_none()).collect();
++            // FreeANDIY: Plex sits under upstream's keys; upstream's face right behind it covers the rest.
++            let fallback = if name == "JetBrainsMono" { "JetBrainsMono-Upstream" } else { "Inter-Upstream" };
++            let fallback = &defs.font_data[fallback];
++            let fallback = skrifa::FontRef::from_index(&fallback.font, fallback.index).unwrap().charmap();
++            let mut missing: Vec<char> = text.chars().filter(|c| charmap.map(*c).is_none() && fallback.map(*c).is_none()).collect();
+             missing.sort_unstable();
+             missing.dedup();
+             assert!(missing.is_empty(), "{code}: {name} lacks {missing:?}");
 diff --git a/crates/ui-egui/tests/ui.rs b/crates/ui-egui/tests/ui.rs
 index 4c1bdffb..af0a8c46 100644
 --- a/crates/ui-egui/tests/ui.rs

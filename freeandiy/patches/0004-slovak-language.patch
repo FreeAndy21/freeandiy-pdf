@@ -1,3 +1,46 @@
+diff --git a/crates/engine/src/dates.rs b/crates/engine/src/dates.rs
+index e26d9ec6..e4cc460d 100644
+--- a/crates/engine/src/dates.rs
++++ b/crates/engine/src/dates.rs
+@@ -56,7 +56,7 @@ const AR_DAYS: [&str; 7] = ["الأحد", "الاثنين", "الثلاثاء",
+ 
+ /// The languages month and weekday names can be written in (Preferences ▸ Date format ▸ Language):
+ /// the interface languages, in the same order and with the same names.
+-pub static DATE_LANGUAGES: [DateLanguage; 22] = [
++pub static DATE_LANGUAGES: [DateLanguage; 23] = [
+     DateLanguage {
+         code: "en",
+         name: "English",
+@@ -115,6 +115,29 @@ pub static DATE_LANGUAGES: [DateLanguage; 22] = [
+         days: ["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"],
+         days_short: ["ne", "po", "út", "st", "čt", "pá", "so"],
+     },
++    // Slovak (added by FreeANDIY).
++    DateLanguage {
++        code: "sk",
++        name: "Slovenčina",
++        months: ["január", "február", "marec", "apríl", "máj", "jún", "júl", "august", "september", "október", "november", "december"],
++        months_with_day: Some([
++            "januára",
++            "februára",
++            "marca",
++            "apríla",
++            "mája",
++            "júna",
++            "júla",
++            "augusta",
++            "septembra",
++            "októbra",
++            "novembra",
++            "decembra",
++        ]),
++        months_short: ["jan", "feb", "mar", "apr", "máj", "jún", "júl", "aug", "sep", "okt", "nov", "dec"],
++        days: ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"],
++        days_short: ["ne", "po", "ut", "st", "št", "pi", "so"],
++    },
+     DateLanguage {
+         code: "pt-br",
+         name: "Português (Brasil)",
 diff --git a/crates/ui-egui/src/i18n/mod.rs b/crates/ui-egui/src/i18n/mod.rs
 index 18a0fc54..34d750e3 100644
 --- a/crates/ui-egui/src/i18n/mod.rs
