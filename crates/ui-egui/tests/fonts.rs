@@ -298,7 +298,11 @@ fn primary_ui_fonts_cover_latin_and_cyrillic_catalogs() {
             let data = &defs.font_data[name];
             let font = skrifa::FontRef::from_index(&data.font, data.index).unwrap();
             let charmap = font.charmap();
-            let mut missing: Vec<char> = text.chars().filter(|c| charmap.map(*c).is_none()).collect();
+            // FreeANDIY: Plex sits under upstream's keys; upstream's face right behind it covers the rest.
+            let fallback = if name == "JetBrainsMono" { "JetBrainsMono-Upstream" } else { "Inter-Upstream" };
+            let fallback = &defs.font_data[fallback];
+            let fallback = skrifa::FontRef::from_index(&fallback.font, fallback.index).unwrap().charmap();
+            let mut missing: Vec<char> = text.chars().filter(|c| charmap.map(*c).is_none() && fallback.map(*c).is_none()).collect();
             missing.sort_unstable();
             missing.dedup();
             assert!(missing.is_empty(), "{code}: {name} lacks {missing:?}");

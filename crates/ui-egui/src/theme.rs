@@ -332,6 +332,12 @@ fn font_definitions_for_platform(prefer_hans: bool, platform: FontPolicyPlatform
     add(&mut fonts, "JetBrainsMono", crate::freeandiy::fonts::mono_regular());
     fonts.families.entry(FontFamily::Proportional).or_default().insert(0, "Inter".to_owned());
     fonts.families.entry(FontFamily::Monospace).or_default().insert(0, "JetBrainsMono".to_owned());
+    // FreeANDIY: upstream's faces stay right behind Plex for the glyphs Plex lacks (Plex Mono has
+    // no Greek, for example).
+    add(&mut fonts, "Inter-Upstream", pdfcraft_fonts::INTER_REGULAR);
+    add(&mut fonts, "JetBrainsMono-Upstream", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
+    fonts.families.entry(FontFamily::Proportional).or_default().insert(1, "Inter-Upstream".to_owned());
+    fonts.families.entry(FontFamily::Monospace).or_default().insert(1, "JetBrainsMono-Upstream".to_owned());
     // The same static bytes pdfcraft-fonts uses for Japanese/Chinese text in PDFs: one copy, not two.
     for face in pdfcraft_fonts::ui_cjk_fonts(prefer_hans) {
         let name = face.name();

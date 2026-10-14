@@ -273,3 +273,30 @@
 freeandiy	{app} is based on the open-source project {upstream} (© ArtCraft Team and contributors, MIT/Apache-2.0). FreeANDIY is not affiliated with the ArtCraft team.	{app} je založený na open-source projekte {upstream} (© ArtCraft Team a prispievatelia, MIT/Apache-2.0). FreeANDIY nie je spojený s tímom ArtCraft.
 freeandiy	FreeANDIY: free creative and office apps	FreeANDIY: bezplatné kreatívne a kancelárske aplikácie
 freeandiy	FreeANDIY PDF is part of FreeANDIY by Free Andy Agency. Report problems on GitHub.	FreeANDIY PDF je súčasťou FreeANDIY od Free Andy Agency. Problémy hláste na GitHube.
+
+# Key caps (the `key` context: names printed on the keys).
+key	Ctrl	Ctrl
+key	Shift	Shift
+key	Delete	Delete
+key	Esc	Esc
+key	Home	Home
+key	End	End
+key	Space	Medzerník
+
+# Preferences ▸ Animation effects.
+	Animation effects	Animačné efekty
+animation effects	On	Zapnuté
+animation effects	Off	Vypnuté
+
+# Selecting and moving several objects in Edit a PDF.
+	Drag the selection to move it. Esc clears the selection.	Presunutím výberu ho posuniete. Esc zruší výber.
+	Shift-click to select several objects. Drag empty space to select an area.	Shift-kliknutím vyberiete viac objektov. Ťahaním po prázdnom mieste vyberiete oblasť.
+	Select at most 1000 objects at a time.	Naraz môžete vybrať najviac 1000 objektov.
+	Finish or discard the text being edited before selecting several objects.	Pred výberom viacerých objektov dokončite alebo zahoďte upravovaný text.
+	Move object	Presunúť objekt
+	Move objects	Presunúť objekty
+	Vertical text cannot be moved with this selection.	Zvislý text sa s týmto výberom presunúť nedá.
+	Text used as a clipping path cannot be moved with this selection.	Text použitý ako orezová cesta sa s týmto výberom presunúť nedá.
+	These objects could not be moved. Select them again and try a smaller move.	Tieto objekty sa nepodarilo presunúť. Vyberte ich znova a skúste menší posun.
+	This page contains objects that cannot be selected together.	Táto strana obsahuje objekty, ktoré sa nedajú vybrať spolu.
+@plural	{n} object selected|{n} objects selected	Vybraný {n} objekt|Vybrané {n} objekty|Vybraných {n} objektov

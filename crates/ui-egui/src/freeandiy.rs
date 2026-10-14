@@ -91,7 +91,7 @@ pub fn tokens(t: Tokens) -> Tokens {
                 divider: ink(0.14),
                 text: BLACK,
                 text_muted: ink(0.70),
-                text_faint: ink(0.58),
+                text_faint: ink(0.66),
                 icon: BLACK,
                 hover: ink(0.07),
                 pressed: ink(0.14),
