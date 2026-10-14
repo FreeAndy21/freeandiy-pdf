@@ -263,6 +263,22 @@ index 4f5aaa79..46693704 100644
              if resp.on_hover_text(l.url).clicked() {
                  clicked = Some(l.command);
              }
+diff --git a/crates/ui-egui/tests/folders.rs b/crates/ui-egui/tests/folders.rs
+index 583cc35e..661e096f 100644
+--- a/crates/ui-egui/tests/folders.rs
++++ b/crates/ui-egui/tests/folders.rs
+@@ -200,8 +200,9 @@ fn show_more_reveals_the_older_pdfs() {
+ #[test]
+ fn a_long_pdf_name_is_cut_before_its_date_and_size() {
+     let dir = TempFolder::new("long");
+-    // Short enough for Windows' 260-character paths under the temp folder.
+-    let name = format!("{}.pdf", "Signed contract with a long name ".repeat(4));
++    // Short enough for Windows' 260-character paths under the temp folder. FreeANDIY: long enough
++    // to be cut in IBM Plex Sans, which is narrower than upstream's Inter.
++    let name = format!("{}.pdf", "Signed contract with a much longer name ".repeat(4));
+     dir.file(&name, FIXTURE, Duration::from_secs(10));
+     let folder = dir.path();
+     let mut h = harness(move |app| {
 diff --git a/crates/ui-egui/tests/fonts.rs b/crates/ui-egui/tests/fonts.rs
 index 63a31d4c..8fb5c288 100644
 --- a/crates/ui-egui/tests/fonts.rs
