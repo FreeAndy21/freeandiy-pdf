@@ -15,7 +15,7 @@ release: ${RELEASE}
 section: graphics
 priority: optional
 maintainer: ${PDFCRAFT_MAINTAINER}
-vendor: Learning Machines LLC
+vendor: Free Andy Agency
 homepage: https://freeandiy.freeandy.agency/pdf
 license: MIT OR Apache-2.0
 description: |-
