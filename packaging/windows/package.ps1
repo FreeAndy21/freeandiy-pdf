@@ -132,10 +132,13 @@ foreach ($f in 'NOTICE', 'LICENSE-document.txt') {
   Copy-Item (Join-Path $Stage $f) $Portable
 }
 Copy-Item -Recurse $Models (Join-Path $Portable 'models')
-foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'CHANGELOG-FREEANDIY.md') {
   $p = Join-Path $Root $f
   if (Test-Path $p) { Copy-Item $p $Portable }
 }
+# FreeANDIY: the bundled UI fonts' licences and the brand terms (Apache-2.0 4(d): NOTICE above).
+Copy-Item (Join-Path $Root 'freeandiy\assets\fonts\OFL-*.txt') $Portable
+Copy-Item (Join-Path $Root 'freeandiy\assets\brand\LICENSE-brand.txt') (Join-Path $Portable 'LICENSE-FreeANDIY-brand.txt')
 # Builds made with craft-fonts (CRAFT_FONTS_DIR, set for every release) embed its fonts: ship their
 # licences, fonts\<family>\OFL.txt -> OFL-<family>.txt.
 if ($env:CRAFT_FONTS_DIR) {
