@@ -1,0 +1,29 @@
+# This repository's FreeANDIY settings (branding.toml is shared by all FreeANDIY repositories).
+# Modified-by: FreeANDIY (Free Andy Agency), 2026. New file, not part of upstream PdfCraft.
+
+app = "pdf" # which [apps.<id>] entry of branding.toml this repository builds
+
+[build]
+# cargo arguments for the release binaries, the tests sync-upstream.sh runs, and the web page.
+bins = "-p pdfcraft -p pdfcraft-cli"
+features = ""
+tests = "-p pdfcraft-ui-egui -p pdfcraft-engine -p pdfcraft -p pdfcraft-cli"
+web_index = "apps/pdfcraft-web/index.html"
+# Environment for tests: English UI whatever the machine's locale.
+test_env = "PDFCRAFT_LOCALE=en"
+web_env = ""
+# Upstream's ci.yml runs the tests on Linux, macOS and Windows.
+ci_tests = "false"
+
+[check]
+# check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
+# in string literals (git pathspecs, space-separated).
+allow = ""
+rs_exclude = ":!xtask/**"
+
+[msi]
+# Windows Installer component GUIDs beyond branding.toml's (new, so FreeANDIY never shares an
+# installed component with PdfCraft). Never change them once released.
+start_menu_guid = "C50DD59B-46AD-48A4-8F66-62971DC6A809"
+desktop_guid = "5F8CFE80-1B3D-491D-A6D7-BA199A1AF4EC"
+context_menu_guid = "780E2B7E-A89F-401F-83E1-75974FD60421"
