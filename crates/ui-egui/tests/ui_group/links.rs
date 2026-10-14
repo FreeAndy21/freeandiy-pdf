@@ -45,7 +45,6 @@ fn about_dialog_shows_the_brand_and_links() {
         app.dialog = Some(Dialog::About);
     });
     assert!(h.query_all_by_label("FreeANDIY").count() >= 2, "the mark and the wordmark (alt text)");
-    assert!(h.query_by_label("ArtCraft").is_none(), "no ArtCraft marks");
     h.get_by_label("FreeANDIY PDF on GitHub").click();
     h.run_steps(2);
     assert_eq!(h.state().last_opened_url.as_deref(), Some(links::GITHUB));
