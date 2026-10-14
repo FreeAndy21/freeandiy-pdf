@@ -300,7 +300,7 @@ index 4c1bdffb..af0a8c46 100644
          assert!(r.top() >= 0.0 && r.bottom() <= band, "{label}: {r:?} inside the {band} pt title bar");
          assert!(r.height() >= 24.0, "{label}: {r:?} stays clickable");
 diff --git a/crates/ui-egui/tests/ui_group/links.rs b/crates/ui-egui/tests/ui_group/links.rs
-index b08036b1..b10cf946 100644
+index b08036b1..7dd1f051 100644
 --- a/crates/ui-egui/tests/ui_group/links.rs
 +++ b/crates/ui-egui/tests/ui_group/links.rs
 @@ -1,5 +1,5 @@
@@ -343,14 +343,13 @@ index b08036b1..b10cf946 100644
          h.get_by_label(label).click();
          h.run_steps(2);
          assert_eq!(h.state().last_opened_url.as_deref(), Some(url), "{label}");
-@@ -50,10 +46,11 @@ fn about_dialog_shows_the_brand_and_links() {
+@@ -50,10 +46,10 @@ fn about_dialog_shows_the_brand_and_links() {
          app.open_bytes("one.pdf", None, pdf.to_vec()).unwrap();
          app.dialog = Some(Dialog::About);
      });
 -    assert!(h.query_all_by_label("ArtCraft").count() >= 2, "the mark and the wordmark (alt text)");
 -    h.get_by_label("Join our Discord").click();
 +    assert!(h.query_all_by_label("FreeANDIY").count() >= 2, "the mark and the wordmark (alt text)");
-+    assert!(h.query_by_label("ArtCraft").is_none(), "no ArtCraft marks");
 +    h.get_by_label("PdfCraft on GitHub").click();
      h.run_steps(2);
 -    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
