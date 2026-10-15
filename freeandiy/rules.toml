@@ -254,7 +254,8 @@ min = 4
 [[replace]]
 name = "product name PdfCraft (Rust code, not comments; whole word: PdfCraftApp stays)"
 include = ["**/*.rs"]
-exclude = ["xtask/**", "vendor/**"]
+# crates/edit/src/tests.rs: its texts are typed with test fonts that carry only the glyphs they need.
+exclude = ["xtask/**", "vendor/**", "crates/edit/src/tests.rs"]
 regex = '\bPdfCraft\b'
 replace = "{{this.name}}"
 skip_comments = ["//"]

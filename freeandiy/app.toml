@@ -20,7 +20,7 @@ ci_tests = "false"
 # in string literals (git pathspecs, space-separated).
 # Also: the content-stream wrap markers are recognised in files either app edited.
 allow = "PdfCraftFuzz|PdfCraftTest|No_Such_Queue_PdfCraft|[qQ] %PdfCraft"
-rs_exclude = ":!xtask/**"
+rs_exclude = ":!xtask/** :!crates/edit/src/tests.rs"
 
 [msi]
 # Windows Installer component GUIDs beyond branding.toml's (new, so FreeANDIY never shares an
