@@ -245,6 +245,13 @@ replace = "{{this.name}}"
 min = 0
 
 [[replace]]
+name = "protect: the content-stream wrap markers (q %PdfCraft / Q %PdfCraft: recognised in files either app edited)"
+include = ["crates/edit/src/*.rs"]
+regex = '([qQ] %)PdfCraft'
+replace = '${1}@@PDFWRAP@@'
+min = 4
+
+[[replace]]
 name = "product name PdfCraft (Rust code, not comments; whole word: PdfCraftApp stays)"
 include = ["**/*.rs"]
 exclude = ["xtask/**", "vendor/**"]
@@ -474,3 +481,10 @@ include = ["packaging/**", "apps/*/build.rs"]
 find = "Learning Machines LLC"
 replace = "{{brand.owner}}"
 min = 1
+
+[[replace]]
+name = "restore the content-stream wrap markers"
+include = ["crates/edit/src/*.rs"]
+find = "@@PDFWRAP@@"
+replace = "PdfCraft"
+min = 4
