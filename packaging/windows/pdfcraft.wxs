@@ -66,6 +66,7 @@
 
     <Feature Id="Main" Title="FreeANDIY PDF" Level="1">
       <ComponentGroupRef Id="PdfcraftFiles" />
+      <ComponentGroupRef Id="FreeandiyNotices" />
       <ComponentGroupRef Id="PdfcraftModels" />
     </Feature>
   </Package>
@@ -188,6 +189,13 @@
          component each, so new models ship without naming them here. -->
     <ComponentGroup Id="PdfcraftModels" Directory="ModelsFolder">
       <Files Include="$(var.ModelsDir)\*" />
+    </ComponentGroup>
+  </Fragment>
+  <!-- FreeANDIY: licences, NOTICE, attribution, font licences and brand terms (Apache-2.0 4(d)),
+       staged by package.ps1. -->
+  <Fragment>
+    <ComponentGroup Id="FreeandiyNotices" Directory="INSTALLFOLDER">
+      <Files Include="$(var.NoticesDir)\*" />
     </ComponentGroup>
   </Fragment>
 </Wix>
