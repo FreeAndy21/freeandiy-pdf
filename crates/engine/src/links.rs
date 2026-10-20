@@ -7,8 +7,8 @@ use std::path::{Path, PathBuf};
 /// The app's name in ArtCraft URLs (`getartcraft.com/apps/{APP}`, `github.com/storytold/{APP}`).
 pub const APP: &str = "pdfcraft";
 
-pub const WEBSITE: &str = "https://freeandiy.freeandy.agency";
-pub const APP_PAGE: &str = "https://freeandiy.freeandy.agency/pdf";
+pub const WEBSITE: &str = "https://freeandiy-web.vercel.app";
+pub const APP_PAGE: &str = "https://freeandiy-web.vercel.app/pdf";
 pub const GITHUB: &str = "https://github.com/FreeAndy21/freeandiy-pdf";
 
 /// A link and the registry command that opens it.
